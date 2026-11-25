@@ -100,33 +100,41 @@ main.app{max-width:680px;margin:0 auto;padding:6px 14px calc(100px + env(safe-ar
 .panel{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:14px}
 .empty{color:var(--ink-2);font-size:15px;padding:18px 4px;text-align:center}
 .muted{color:var(--muted)}
+/* lifts: up next cards */
+.view-title{font-family:var(--font-num);font-weight:700;font-size:38px;line-height:1;margin:14px 2px 14px}
+.lift-card{background:var(--surface);border:1px solid var(--line);border-radius:18px;margin-bottom:12px;overflow:hidden}
+.lift-card.open{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.card-head{display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%;background:none;border:0;text-align:left;padding:14px 16px 8px}
+.card-head .lift-name{font-size:30px}
+.card-meta{font-size:13px;color:var(--muted);margin-top:2px}
+.scheme{background:var(--accent-soft);color:var(--accent);border-radius:7px;padding:1px 8px;font-family:var(--font-num);font-weight:600;font-size:17px;line-height:1.35;white-space:nowrap}
+.next-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;padding:2px 16px 0}
+.next-set{background:var(--surface-2);border-radius:12px;padding:9px 6px 8px;text-align:center;min-width:0}
+.next-set .nw{font-family:var(--font-num);font-weight:700;font-size:32px;line-height:1;font-variant-numeric:tabular-nums}
+.next-set .nr{font-size:13px;color:var(--ink-2);margin-top:4px;font-weight:600}
+.next-set.top{background:var(--accent-soft)}
+.next-set.top .nr{color:var(--accent)}
+.card-info{display:flex;justify-content:space-between;gap:4px 14px;flex-wrap:wrap;padding:10px 16px 0;font-size:13px;color:var(--ink-2)}
+.card-info b{font-family:var(--font-num);font-size:17px;color:var(--ink);font-weight:700}
+.beat{padding:6px 16px 0;font-size:13px;color:var(--ink-2)}
+.beat b{color:var(--ink)}
+.card-actions{display:flex;gap:8px;padding:12px 16px 14px;flex-wrap:wrap}
+.card-actions .btn{flex:1 1 auto;padding:0 12px}
+.recal{margin:0 16px 14px;padding:14px;border-radius:14px;background:var(--surface-2)}
+.recal-title{font-weight:700;font-size:15px}
+.recal-help{font-size:13px;color:var(--ink-2);margin:4px 0 10px;line-height:1.45}
+.recal .inline{color:var(--ink-2)}
+.recal-prev{font-size:13px;color:var(--ink-2);margin-top:8px;min-height:19px}
+.recal-prev b{font-family:var(--font-num);font-size:17px;color:var(--ink)}
+.recal .btn-row{padding:10px 0 0}
 
-/* train: week header */
-.week-head{display:grid;grid-template-columns:44px 1fr 44px;align-items:center;gap:8px;margin:10px 0 14px}
-.week-title{text-align:center;min-width:0}
-.cycle-line{font-family:var(--font-num);font-weight:700;font-size:44px;line-height:.95;letter-spacing:-.01em}
-.week-line{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:4px;font-family:var(--font-num);font-weight:600;font-size:22px;color:var(--ink-2)}
-.scheme{background:var(--accent-soft);color:var(--accent);border-radius:7px;padding:0 8px;font-size:19px;line-height:1.35}
-.dates{font-size:13px;color:var(--muted);margin-top:3px}
-.back-next{text-align:center;margin:-6px 0 10px}
-
-/* train: sessions */
-.session{background:var(--surface);border:1px solid var(--line);border-radius:18px;margin-bottom:10px;overflow:hidden}
-.session.is-next{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
-.session-head{display:grid;grid-template-columns:1fr auto;align-items:center;gap:0 12px;width:100%;text-align:left;background:none;border:0;padding:14px 16px}
+/* sessions (shared by cards and history) */
 .lift-name{font-family:var(--font-num);font-weight:700;font-size:27px;line-height:1.05}
-.session-sub{font-size:13px;color:var(--muted);margin-top:2px}
-.session-sub b{color:var(--ink-2);font-weight:600}
-.session-sub .sum{margin-left:10px;white-space:nowrap}
 .head-right{display:flex;align-items:center;gap:8px}
-.tag{font-size:12px;font-weight:700;border-radius:999px;padding:4px 10px;white-space:nowrap}
-.tag.next{background:var(--accent);color:var(--accent-ink)}
-.tag.done{background:var(--good-soft);color:var(--good)}
 .chev{width:20px;height:20px;fill:none;stroke:var(--muted);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:transform .18s ease}
-.session.open .chev{transform:rotate(180deg)}
-.session-body{display:none;padding:0 16px 16px}
-.session.open .session-body{display:block}
-.tm-line{font-size:13px;color:var(--muted);margin:-2px 0 8px}
+.open > .card-head .chev{transform:rotate(180deg)}
+.session-body{padding:0 16px 16px}
+.tm-line{font-size:13px;color:var(--muted);margin:0 0 8px}
 
 .sets{border-top:1px solid var(--line)}
 .group-label{font-size:12px;font-weight:600;color:var(--muted);padding:10px 0 0}
@@ -173,34 +181,26 @@ main.app{max-width:680px;margin:0 auto;padding:6px 14px calc(100px + env(safe-ar
 .session-foot{display:flex;gap:8px;margin-top:14px;align-items:center;flex-wrap:wrap}
 .session-foot .logged-on{font-size:13px;color:var(--muted);margin-left:auto}
 .finish{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px;text-align:center}
-.finish h2{font-family:var(--font-num);font-size:28px;margin:0 0 6px}
+/* history */
+.hist{list-style:none;margin:0;padding:0}
+.hrow{border-bottom:1px solid var(--line)}
+.hrow:last-child{border-bottom:0}
+.hrow-btn{display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%;background:none;border:0;text-align:left;padding:11px 2px;color:inherit}
+.h-title{font-weight:600;font-size:15px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.h-title .scheme{font-size:14px;padding:0 6px}
+.h-sub{font-size:12px;color:var(--muted);margin-top:2px}
+.h-right{text-align:right;flex:none}
+.h-main{font-family:var(--font-num);font-weight:700;font-size:22px;line-height:1.1;white-space:nowrap}
+.h-main.dim{color:var(--muted);font-size:18px}
+.hrow .session-body{padding:0 2px 14px}
+.hrow.next-up{border-bottom:0}
+.hrow.next-up .hrow-btn{background:var(--accent-soft);border-radius:12px;padding:11px 12px;margin:2px 0 6px}
+.hrow.next-up .h-title{color:var(--accent)}
+.recal-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px 2px}
+.recal-row .h-title{color:var(--accent)}
+.recal-row .link-btn{padding:4px 0 0;font-size:13px}
+.legend i.rc{width:10px;height:10px;border:2px solid var(--chart);border-radius:50%}
 
-/* plan */
-.plan-head{display:grid;grid-template-columns:44px 1fr 44px;align-items:center;gap:8px;margin:10px 0 14px;text-align:center}
-.plan-head .cycle-line{font-size:38px}
-.plan-wrap{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:6px;overflow-x:auto}
-table.plan{width:100%;border-collapse:separate;border-spacing:4px;min-width:360px}
-.plan th{font-weight:600;font-size:12px;color:var(--muted);text-align:center;padding:4px 2px;line-height:1.2}
-.plan th small{display:block;font-weight:500}
-.plan th.lift{text-align:left;font-family:var(--font-num);font-weight:700;font-size:19px;color:var(--ink);white-space:nowrap;padding-left:6px}
-.plan th.lift small{font-family:var(--font-body);font-size:11px;color:var(--muted);font-weight:500}
-.plan td{padding:0;text-align:center;vertical-align:middle}
-.cell{width:100%;min-height:56px;border-radius:11px;border:1px solid var(--line);background:var(--surface-2);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:4px 2px}
-.cell .cw{font-family:var(--font-num);font-weight:700;font-size:21px;line-height:1}
-.cell .cr{font-size:12px;color:var(--muted);margin-top:3px;line-height:1}
-.cell.logged{background:var(--good-soft);border-color:transparent}
-.cell.logged .cr{color:var(--good);font-weight:700}
-.cell.is-next{border:2px solid var(--accent)}
-.tm-cell{display:flex;flex-direction:column;align-items:center;gap:2px}
-.tm-input{width:62px;height:40px;text-align:center;border:1px solid var(--line-strong);border-radius:10px;background:var(--surface);font-family:var(--font-num);font-weight:700;font-size:19px;padding:0;-moz-appearance:textfield;appearance:textfield}
-.tm-input.override{border-color:var(--accent);color:var(--accent)}
-.tm-input::-webkit-outer-spin-button,.tm-input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
-.tm-reset{background:none;border:0;color:var(--accent);font-size:11px;font-weight:600;padding:0}
-.plan-notes{font-size:13px;color:var(--ink-2);margin:12px 4px 0;line-height:1.55}
-.plan-notes b{font-family:var(--font-num);font-size:16px;color:var(--ink)}
-.plan-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
-
-/* progress */
 .view-title{font-family:var(--font-num);font-weight:700;font-size:38px;line-height:1;margin:14px 2px 14px}
 .tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
 @media (min-width:620px){.tiles{grid-template-columns:repeat(4,minmax(0,1fr))}}
@@ -282,7 +282,7 @@ select.field{padding-right:6px}
 </head>
 <body>
 <header class="topbar">
-  <a class="brand" href="#train" aria-label="Go to today's training">
+  <a class="brand" href="#lifts" aria-label="Go to up next">
     <svg width="26" height="26" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="var(--ink)"/><rect x="6" y="29" width="52" height="6" rx="2" fill="#8A9199"/><rect x="14" y="10" width="7" height="44" rx="2" fill="#1F5FC4"/><rect x="23" y="10" width="7" height="44" rx="2" fill="#1F5FC4"/><rect x="32" y="15" width="6" height="34" rx="2" fill="#F2B705"/><rect x="40" y="19" width="5" height="26" rx="2" fill="#1E9A4B"/></svg>
     <span id="brand-title">5/3/1</span>
   </a>
@@ -293,9 +293,8 @@ select.field{padding-right:6px}
 
 <div class="tabbar">
   <nav aria-label="Sections">
-    <a href="#train" data-tab="train"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12h20M5.5 8v8M8.5 5.5v13M15.5 5.5v13M18.5 8v8"/></svg>Train</a>
-    <a href="#plan" data-tab="plan"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="16" rx="2.5"/><path d="M3.5 9.5h17M9.2 9.5v11M14.8 9.5v11M8 2.8v3.4M16 2.8v3.4"/></svg>Plan</a>
-    <a href="#progress" data-tab="progress"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 20.5h17"/><path d="M4.5 16l5-5.5 3.5 3 6.5-8"/><circle cx="19.5" cy="5.5" r="1.2"/></svg>Progress</a>
+    <a href="#lifts" data-tab="lifts"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12h20M5.5 8v8M8.5 5.5v13M15.5 5.5v13M18.5 8v8"/></svg>Up next</a>
+    <a href="#history" data-tab="history"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 20.5h17"/><path d="M4.5 16l5-5.5 3.5 3 6.5-8"/><circle cx="19.5" cy="5.5" r="1.2"/></svg>History</a>
     <a href="#settings" data-tab="settings"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6.5h9M17 6.5h3M4 12h3M11 12h9M4 17.5h11M19 17.5h1"/><circle cx="15" cy="6.5" r="2"/><circle cx="9" cy="12" r="2"/><circle cx="17" cy="17.5" r="2"/></svg>Settings<span class="badge-dot" id="settings-dot"></span></a>
   </nav>
 </div>
@@ -313,12 +312,13 @@ select.field{padding-right:6px}
    - weights rounded to the nearest increment (MROUND)
    - estimated 1RM from AMRAP set: Brzycki, w / (1.0278 - 0.0278 x reps)
    - Boring But Big at BBB% of TM
+   Each lift moves through its own weeks: logging a session moves that lift
+   to its next week. Recalibrating sets a new TM and restarts the lift at
+   week 1 of a new cycle; earlier sessions keep the weights you lifted.
    ============================================================ */
 
 const LS_STATE = 't531.state.v1';
 const LS_SYNC  = 't531.sync.v1';
-const DAYS = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-const DAYS_LONG = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 const WEEKS = [
   { n:1, label:'5s',     pcts:[0.65,0.75,0.85], reps:[5,5,5], amrap:true  },
   { n:2, label:'3s',     pcts:[0.70,0.80,0.90], reps:[3,3,3], amrap:true  },
@@ -329,6 +329,7 @@ const WARMUP = { pcts:[0.40,0.50,0.60], reps:[5,5,3] };
 const PLATE_DEFAULTS = { lbs:[45,35,25,10,5,2.5], kg:[25,20,15,10,5,2.5,1.25] };
 const BAR_DEFAULTS = { lbs:45, kg:20 };
 const ROUND_DEFAULTS = { lbs:5, kg:2.5 };
+const SHEET_START = { squat:[290,1], bench:[240,1], deadlift:[330,1], press:[130,1] };
 
 /* ---------- small helpers ---------- */
 const $ = (s, r = document) => r.querySelector(s);
@@ -341,8 +342,6 @@ const clone = o => JSON.parse(JSON.stringify(o));
 const num = v => { if (v === '' || v == null) return null; const n = Number(v); return isFinite(n) ? n : null; };
 const ICON = {
   check:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>',
-  left:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>',
-  right:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>',
   chev:'<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>',
 };
 
@@ -350,14 +349,15 @@ function mround(x, step) {
   if (!(step > 0)) return Math.round(x * 100) / 100;
   return Math.round(Math.round(x / step + 1e-9) * step * 1000) / 1000;
 }
-function todayISO() { const d = new Date(); return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`; }
+function isoOf(d) { return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`; }
+function todayISO() { return isoOf(new Date()); }
 function parseISO(s) {
   const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s || '');
   return m ? new Date(+m[1], +m[2] - 1, +m[3]) : new Date();
 }
-function addDays(d, n) { const x = new Date(d); x.setDate(x.getDate() + n); return x; }
-function fmtDate(d, opts = {}) {
-  const o = { weekday: opts.noWeekday ? undefined : 'short', month: 'short', day: 'numeric' };
+function fmtDate(iso) {
+  const d = parseISO(iso);
+  const o = { month: 'short', day: 'numeric' };
   if (d.getFullYear() !== new Date().getFullYear()) o.year = 'numeric';
   return d.toLocaleDateString('en-US', o);
 }
@@ -369,33 +369,33 @@ function ago(t) {
   if (s < 86400) return `${Math.round(s / 3600)} h ago`;
   return new Date(t).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
 }
+const cmp = (a, b) => (a.c - b.c) || (a.w - b.w);
+const parseKey = k => { const p = k.split('|'); return { id: p[0], c: +p[1], w: +p[2] }; };
 
 /* ---------- seed: data from the Google Sheet ---------- */
 function baseState() {
   return {
-    v: 1,
+    v: 2,
     updatedAt: 0,
     t: { settings: 0, lifts: 0, tm: 0, bw: 0 },
     settings: {
       title: 'Bigger Sol 2026',
       unit: 'lbs', bar: 45, round: 5,
       tmPct: 0.9, bbbPct: 0.5,
-      start: '2016-08-23',
       formula: 'brzycki',
       warmups: false, plateViz: true,
       plates: [45, 35, 25, 10, 5, 2.5],
-      cycles: 13,
       theme: 'auto',
     },
     lifts: [
-      { id: 'squat',    name: 'Squat',          dow: 2, w: 290, r: 1, inc: 10, bbbSets: 5, bbbReps: 10, bbbDeload: 3 },
-      { id: 'bench',    name: 'Bench press',    dow: 3, w: 240, r: 1, inc: 5,  bbbSets: 5, bbbReps: 10, bbbDeload: 3 },
-      { id: 'deadlift', name: 'Deadlift',       dow: 4, w: 330, r: 1, inc: 10, bbbSets: 5, bbbReps: 8,  bbbDeload: 3 },
-      { id: 'press',    name: 'Shoulder press', dow: 5, w: 130, r: 1, inc: 5,  bbbSets: 5, bbbReps: 10, bbbDeload: 3 },
+      { id: 'squat',    name: 'Squat',          w: 290, r: 1, inc: 10, bbbSets: 5, bbbReps: 10, bbbDeload: 3 },
+      { id: 'bench',    name: 'Bench press',    w: 240, r: 1, inc: 5,  bbbSets: 5, bbbReps: 10, bbbDeload: 3 },
+      { id: 'deadlift', name: 'Deadlift',       w: 330, r: 1, inc: 10, bbbSets: 5, bbbReps: 8,  bbbDeload: 3 },
+      { id: 'press',    name: 'Shoulder press', w: 130, r: 1, inc: 5,  bbbSets: 5, bbbReps: 10, bbbDeload: 3 },
     ],
-    tm: {},
+    tm: {},      // "lift|cycle" -> training max from that cycle on: a number, or {tm, w, r, date} for a recalibration
     bw: {},
-    log: {},
+    log: {},     // "lift|cycle|week" -> {reps, w, done, sets, bbb, note, date, t}
   };
 }
 function makeSeed() {
@@ -415,6 +415,7 @@ function makeSeed() {
   }
   return s;
 }
+function validShape(d) { return d && typeof d === 'object' && Array.isArray(d.lifts) && d.settings && typeof d.settings === 'object'; }
 function normalize(d) {
   const b = baseState();
   const s = Object.assign({}, b, d);
@@ -425,10 +426,30 @@ function normalize(d) {
   s.tm = d.tm && typeof d.tm === 'object' ? d.tm : {};
   s.bw = d.bw && typeof d.bw === 'object' ? d.bw : {};
   s.log = d.log && typeof d.log === 'object' ? d.log : {};
+  s.v = d.v || 1;
   if (!Array.isArray(s.settings.plates)) s.settings.plates = PLATE_DEFAULTS[s.settings.unit] || PLATE_DEFAULTS.lbs;
+  return migrate(s);
+}
+/* Version 1 changed a lift's cycle-1 starting max when you edited "Current lift",
+   which shifted every past cycle. Treat any edited starting max as a
+   recalibration that starts at the lift's next cycle, and put the sheet's
+   starting max back so earlier cycles stay as they were. */
+function migrate(s) {
+  if ((s.v || 1) >= 2) return s;
+  s.lifts.forEach(l => {
+    const orig = SHEET_START[l.id];
+    if (!orig) return;
+    const w = +l.w, r = +l.r || 1;
+    if (w === orig[0] && r === orig[1]) return;
+    l.w = orig[0]; l.r = orig[1];
+    const rc = restartCycle(s, l);
+    const e1 = e1rm(w, r, s.settings.formula) || 0;
+    s.tm[`${l.id}|${rc}`] = { tm: Math.round(e1 * (+s.settings.tmPct || 0.9) * 10) / 10, w, r, date: s.t.lifts ? isoOf(new Date(s.t.lifts)) : todayISO() };
+    s.t.tm = Math.max(s.t.tm || 0, s.t.lifts || 0);
+  });
+  s.v = 2;
   return s;
 }
-function validShape(d) { return d && typeof d === 'object' && Array.isArray(d.lifts) && d.settings && typeof d.settings === 'object'; }
 
 /* ---------- program math ---------- */
 function e1rm(w, r, formula) {
@@ -437,11 +458,17 @@ function e1rm(w, r, formula) {
   if (formula === 'epley') return w * (1 + r / 30);
   return w / (1.0278 - 0.0278 * Math.min(r, 36));
 }
+function tmOverride(st, id, c) {
+  const o = st.tm[`${id}|${c}`];
+  if (o == null || o === '') return null;
+  const v = typeof o === 'object' ? +o.tm : +o;
+  return isFinite(v) && v > 0 ? v : null;
+}
 function tmFor(st, lift, c) {
   let tm = (e1rm(+lift.w, +lift.r || 1, st.settings.formula) || 0) * (+st.settings.tmPct || 0.9);
   for (let i = 1; i <= c; i++) {
-    const o = st.tm[`${lift.id}|${i}`];
-    if (o != null && o !== '') tm = +o;
+    const o = tmOverride(st, lift.id, i);
+    if (o != null) tm = o;
     else if (i > 1) tm += (+lift.inc || 0);
   }
   return tm;
@@ -451,41 +478,46 @@ function setWeights(st, lift, c, w) {
   return WEEKS[w - 1].pcts.map(p => mround(tm * p, step));
 }
 function bbbWeight(st, lift, c) { return mround(tmFor(st, lift, c) * (+st.settings.bbbPct || 0), +st.settings.round); }
-function dayOffset(lift) {
-  const sd = parseISO(S.settings.start).getDay();
-  return (((+lift.dow - sd) % 7) + 7) % 7;
-}
-function sessionDate(lift, c, w) { return addDays(parseISO(S.settings.start), (c - 1) * 28 + (w - 1) * 7 + dayOffset(lift)); }
-function liftsOrdered() {
-  return S.lifts.map((l, i) => ({ l, i })).sort((a, b) => dayOffset(a.l) - dayOffset(b.l) || a.i - b.i).map(x => x.l);
-}
 function isLogged(e) { return !!e && (!!e.done || (e.reps != null && e.reps !== '')); }
-function sequence() {
-  const out = [], lifts = liftsOrdered();
-  for (let c = 1; c <= S.settings.cycles; c++) for (let w = 1; w <= 4; w++) for (const lift of lifts) out.push({ c, w, lift });
-  return out;
+function lastLogged(st, lift) {
+  let best = null;
+  for (const k in st.log) {
+    const p = parseKey(k);
+    if (p.id !== lift.id || !isLogged(st.log[k])) continue;
+    if (!best || cmp(p, best) > 0) best = p;
+  }
+  return best;
 }
-function upNext() {
-  const seq = sequence();
-  let last = -1;
-  seq.forEach((s, i) => { if (isLogged(S.log[key(s.lift.id, s.c, s.w)])) last = i; });
-  return seq[last + 1] || null;
+const successor = p => !p ? { c: 1, w: 1 } : p.w < 4 ? { c: p.c, w: p.w + 1 } : { c: p.c + 1, w: 1 };
+function latestRestart(st, lift) {
+  let rc = 0;
+  for (const k in st.tm) { const p = k.split('|'); if (p[0] === lift.id && tmOverride(st, lift.id, +p[1]) != null) rc = Math.max(rc, +p[1]); }
+  return rc;
 }
+function nextFor(st, lift) {
+  const s = successor(lastLogged(st, lift));
+  const rc = latestRestart(st, lift);
+  return rc && cmp({ c: rc, w: 1 }, s) > 0 ? { c: rc, w: 1 } : s;
+}
+function restartCycle(st, lift) { const n = nextFor(st, lift); return n.w === 1 ? n.c : n.c + 1; }
 function topWeight(lift, c, w) { const e = S.log[key(lift.id, c, w)]; return (e && e.w != null) ? +e.w : setWeights(S, lift, c, w)[2]; }
 function entryE1(lift, c, w) {
   const e = S.log[key(lift.id, c, w)];
   if (!e || e.reps == null || e.reps === '' || w > 3) return null;
   return e1rm(topWeight(lift, c, w), +e.reps, S.settings.formula);
 }
-function bestBefore(lift, c, w) {
+function bestE1(lift, before) {
   let best = null;
-  for (let ci = 1; ci <= c; ci++) for (let wi = 1; wi <= 3; wi++) {
-    if (ci === c && wi >= w) break;
-    const v = entryE1(lift, ci, wi);
+  for (const k in S.log) {
+    const p = parseKey(k);
+    if (p.id !== lift.id || p.w > 3) continue;
+    if (before && cmp(p, before) >= 0) continue;
+    const v = entryE1(lift, p.c, p.w);
     if (v != null && (best == null || v > best)) best = v;
   }
   return best;
 }
+const bestBefore = (lift, c, w) => bestE1(lift, { c, w });
 function repsToBeat(weight, best) {
   if (best == null) return null;
   for (let r = 1; r <= 30; r++) if (e1rm(weight, r, S.settings.formula) > best + 1e-6) return r;
@@ -512,7 +544,7 @@ function loadState() {
 }
 function persist() {
   try { localStorage.setItem(LS_STATE, JSON.stringify(S)); }
-  catch (e) { toast('Could not save on this device. Export a backup from Settings.'); }
+  catch (e) { toast('Could not save on this device. Download a backup from Settings.'); }
 }
 function commit(section, opts = {}) {
   const now = Date.now();
@@ -531,7 +563,7 @@ function updateEntry(k, fn) {
 }
 
 /* ---------- UI state ---------- */
-const ui = { tab: 'train', week: null, open: new Set(), openFor: null, planC: null, lift: null, pending: false };
+const ui = { tab: 'lifts', pin: {}, recal: null, lift: null, histOpen: null, pending: false };
 const app = $('#app');
 
 function requestRender() {
@@ -544,9 +576,9 @@ function render() {
   applyTheme();
   $('#brand-title').textContent = S.settings.title || '5/3/1';
   document.querySelectorAll('.tabbar a').forEach(a => { if (a.dataset.tab === ui.tab) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
-  const views = { train: viewTrain, plan: viewPlan, progress: viewProgress, settings: viewSettings };
-  app.innerHTML = (views[ui.tab] || viewTrain)();
-  if (ui.tab === 'progress') drawChart();
+  const views = { lifts: viewLifts, history: viewHistory, settings: viewSettings };
+  app.innerHTML = (views[ui.tab] || viewLifts)();
+  if (ui.tab === 'history') drawChart();
   updateSyncIndicator();
   if (fid) { const el = app.querySelector(`[data-fid="${CSS.escape(fid)}"]`); if (el) el.focus({ preventScroll: true }); }
 }
@@ -563,6 +595,7 @@ function toast(msg, kind) {
   clearTimeout(toastTimer);
   toastTimer = setTimeout(() => { el.className = 'toast' + (kind ? ' ' + kind : ''); }, 2800);
 }
+
 
 /* ---------- plate diagram ---------- */
 function plateStyle(p) {
@@ -595,62 +628,78 @@ function plateViz(weight) {
   return `<div class="plates"><svg width="${sleeveEnd}" height="${H}" viewBox="0 0 ${sleeveEnd} ${H}" aria-hidden="true">${parts.join('')}</svg><span class="ptext">${esc(text)}<span class="sr"> ${esc(unit)} per side</span></span></div>`;
 }
 
-/* ---------- TRAIN ---------- */
-function viewTrain() {
-  const next = upNext();
-  if (!next && !ui.week) {
-    return `<div class="finish" style="margin-top:20px"><h2>All ${S.settings.cycles} cycles logged</h2>
-      <p class="muted">Add another cycle to keep going. Training maxes keep climbing by your increments.</p>
-      <button class="btn primary" data-act="add-cycle">Add a cycle</button></div>`;
-  }
-  const cur = ui.week || { c: next.c, w: next.w };
-  const wk = WEEKS[cur.w - 1];
-  const weekId = `${cur.c}|${cur.w}`;
-  if (ui.openFor !== weekId) {
-    ui.openFor = weekId;
-    ui.open = new Set(next && next.c === cur.c && next.w === cur.w ? [key(next.lift.id, cur.c, cur.w)] : []);
-  }
-  const lifts = liftsOrdered();
-  const d0 = sessionDate(lifts[0], cur.c, cur.w), d1 = sessionDate(lifts[lifts.length - 1], cur.c, cur.w);
-  const atStart = cur.c === 1 && cur.w === 1, atEnd = cur.c === S.settings.cycles && cur.w === 4;
-  const offNext = next && (next.c !== cur.c || next.w !== cur.w);
-  let h = `<section class="week-head">
-    <button class="icon-btn" data-act="week-prev" aria-label="Previous week" ${atStart ? 'disabled' : ''}>${ICON.left}</button>
-    <div class="week-title">
-      <div class="cycle-line">Cycle ${cur.c}</div>
-      <div class="week-line"><span>Week ${cur.w}</span><span class="scheme">${wk.label}</span></div>
-      <div class="dates">${esc(fmtDate(d0, { noWeekday: true }))} to ${esc(fmtDate(d1, { noWeekday: true }))}</div>
-    </div>
-    <button class="icon-btn" data-act="week-next" aria-label="Next week" ${atEnd ? 'disabled' : ''}>${ICON.right}</button>
-  </section>`;
-  if (offNext) h += `<div class="back-next"><button class="link-btn" data-act="go-next">Jump to up next: ${esc(next.lift.name)}, cycle ${next.c} week ${next.w}</button></div>`;
-  for (const lift of lifts) h += sessionCard(lift, cur.c, cur.w, next);
+
+/* ---------- LIFTS: what's next for each lift ---------- */
+function viewLifts() {
+  let h = `<h1 class="view-title">Up next</h1>`;
+  for (const lift of S.lifts) h += liftCard(lift);
   return h;
 }
-function sessionCard(lift, c, w, next) {
-  const k = key(lift.id, c, w), e = S.log[k] || {};
+function liftCard(lift) {
+  const n = nextFor(S, lift);
+  const pinned = ui.pin[lift.id];
+  const at = pinned ? parseKey(pinned) : n;
+  const c = at.c, w = at.w;
   const wk = WEEKS[w - 1];
-  const isNext = next && next.lift.id === lift.id && next.c === c && next.w === w;
-  const logged = isLogged(e);
-  const open = ui.open.has(k);
-  const ws = setWeights(S, lift, c, w);
-  let summary;
-  if (e.reps != null && e.reps !== '' && wk.amrap) {
-    const v = entryE1(lift, c, w);
-    summary = `<b>${fmt(topWeight(lift, c, w))} × ${esc(e.reps)}</b>${v ? `, e1RM ${r0(v)}` : ''}`;
-  } else if (logged) summary = '<b>Done</b>';
-  else summary = `Top set <b>${fmt(ws[2])} × ${wk.reps[2]}${wk.amrap ? '+' : ''}</b>`;
-  const tag = logged ? `<span class="tag done">Done</span>` : isNext ? `<span class="tag next">Up next</span>` : '';
-  return `<article class="session${open ? ' open' : ''}${isNext ? ' is-next' : ''}">
-    <button class="session-head" data-act="toggle" data-key="${esc(k)}" aria-expanded="${open}">
-      <div><div class="lift-name">${esc(lift.name)}</div>
-      <div class="session-sub"><span style="white-space:nowrap">${esc(fmtDate(sessionDate(lift, c, w)))}</span><span class="sum">${summary}</span></div></div>
-      <div class="head-right">${tag}${ICON.chev}</div>
-    </button>
-    ${open ? `<div class="session-body">${sessionBody(lift, c, w)}</div>` : ''}
-  </article>`;
+  const open = !!pinned;
+  const unit = esc(S.settings.unit);
+  let h = `<article class="lift-card${open ? ' open' : ''}" id="card-${esc(lift.id)}">
+    <button class="card-head" data-act="card-toggle" data-id="${esc(lift.id)}" aria-expanded="${open}">
+      <div><div class="lift-name">${esc(lift.name)}</div><div class="card-meta">Cycle ${c}, week ${w} of 4</div></div>
+      <div class="head-right"><span class="scheme">${wk.label}</span>${ICON.chev}</div>
+    </button>`;
+  if (open) {
+    h += `<div class="session-body">${sessionBody(lift, c, w, 'card')}</div>`;
+  } else {
+    const ws = setWeights(S, lift, c, w);
+    h += `<div class="next-row">`;
+    ws.forEach((wt, i) => {
+      const top = i === 2 && wk.amrap;
+      h += `<div class="next-set${top ? ' top' : ''}"><div class="nw">${fmt(wt)}</div><div class="nr">× ${wk.reps[i]}${top ? '+' : ''}</div></div>`;
+    });
+    h += `</div>`;
+    const bSets = w === 4 ? (+lift.bbbDeload || 0) : (+lift.bbbSets || 0);
+    const bbb = bSets > 0 && +S.settings.bbbPct > 0 ? `<span>Boring But Big <b>${fmt(bbbWeight(S, lift, c))}</b> ${bSets} × ${+lift.bbbReps || 10}</span>` : '';
+    h += `<div class="card-info"><span>Training max <b>${r0(tmFor(S, lift, c))}</b> ${unit}</span>${bbb}</div>`;
+    if (wk.amrap) {
+      const best = bestBefore(lift, c, w);
+      const need = repsToBeat(ws[2], best);
+      if (need && need <= 10) h += `<div class="beat"><b>${need}+ reps</b> on the last set beats your best estimated 1RM (${r0(best)}).</div>`;
+    }
+    if (ui.recal === lift.id) h += recalForm(lift);
+    else h += `<div class="card-actions">
+      <button class="btn primary" data-act="start" data-id="${esc(lift.id)}">Log session</button>
+      <button class="btn" data-act="recal-open" data-id="${esc(lift.id)}">Recalibrate</button>
+      <button class="btn quiet" data-act="go-history" data-id="${esc(lift.id)}">History</button>
+    </div>`;
+  }
+  return h + `</article>`;
 }
-function sessionBody(lift, c, w) {
+function recalForm(lift) {
+  const id = esc(lift.id), unit = esc(S.settings.unit);
+  return `<div class="recal">
+    <div class="recal-title">Recalibrate ${esc(lift.name)}</div>
+    <p class="recal-help">Enter a set you can do right now. Your training max resets to ${Math.round(S.settings.tmPct * 100)}% of its estimated 1RM and ${esc(lift.name.toLowerCase())} restarts at week 1. Past sessions stay as you lifted them.</p>
+    <div class="inline"><input class="field recal-input" id="recal-w-${id}" data-id="${id}" data-fid="recal-w-${id}" type="number" inputmode="decimal" step="any" min="0" placeholder="Weight" aria-label="Weight" style="width:96px;text-align:right"> ${unit} ×
+      <input class="field recal-input" id="recal-r-${id}" data-id="${id}" data-fid="recal-r-${id}" type="number" inputmode="numeric" min="1" max="20" value="1" aria-label="Reps" style="width:60px;text-align:right"> reps</div>
+    <div class="recal-prev" id="recal-prev-${id}"></div>
+    <div class="btn-row"><button class="btn primary small" data-act="recal-save" data-id="${id}">Save new max</button><button class="btn quiet small" data-act="recal-cancel">Cancel</button></div>
+  </div>`;
+}
+function recalPreview(id) {
+  const w = num(($(`#recal-w-${CSS.escape(id)}`) || {}).value), r = num(($(`#recal-r-${CSS.escape(id)}`) || {}).value) || 1;
+  const out = $(`#recal-prev-${CSS.escape(id)}`);
+  if (!out) return;
+  if (!w) { out.textContent = ''; return; }
+  const e1 = e1rm(w, Math.round(r), S.settings.formula);
+  const tm = e1 * S.settings.tmPct;
+  const lift = S.lifts.find(l => l.id === id);
+  const first = WEEKS[0].pcts.map(p => fmt(mround(tm * p, +S.settings.round))).join(', ');
+  out.innerHTML = `Estimated 1RM <b>${r0(e1)}</b>, training max <b>${r0(tm)}</b>. Week 1 would be ${first}.`;
+}
+
+/* ---------- one session: sets, AMRAP, BBB, notes ---------- */
+function sessionBody(lift, c, w, ctx) {
   const k = key(lift.id, c, w), e = S.log[k] || {};
   const wk = WEEKS[w - 1];
   const tm = tmFor(S, lift, c);
@@ -694,7 +743,7 @@ function sessionBody(lift, c, w) {
       }
     } else if (best != null) {
       const n = repsToBeat(top, best);
-      result = n ? `Hit <b>${n}</b> rep${n === 1 ? '' : 's'} or more at ${fmt(top)} to beat your best estimated 1RM (${r0(best)}).` : `Your best estimated 1RM is ${r0(best)}.`;
+      result = n && n <= 10 ? `Hit <b>${n}</b> rep${n === 1 ? '' : 's'} or more at ${fmt(top)} to beat your best estimated 1RM (${r0(best)}).` : `Your best estimated 1RM is ${r0(best)}.`;
     } else {
       result = `Log your reps here to start tracking estimated 1RM.`;
     }
@@ -725,126 +774,99 @@ function sessionBody(lift, c, w) {
   }
   h += `<div class="note"><label for="note-${esc(k)}">Notes</label><textarea id="note-${esc(k)}" class="note-input" data-key="${esc(k)}" data-fid="note-${esc(k)}" placeholder="How did it move?">${esc(e.note || '')}</textarea></div>`;
   const hasData = Object.keys(e).some(x => x !== 't');
+  const attrs = `data-key="${esc(k)}" data-id="${esc(lift.id)}" data-ctx="${ctx}"`;
   h += `<div class="session-foot">
-    ${!e.done ? `<button class="btn primary" data-act="done" data-key="${esc(k)}">Mark done</button>` : ''}
-    ${hasData ? `<button class="btn quiet danger" data-act="reset-session" data-key="${esc(k)}">Clear session</button>` : ''}
-    ${e.date ? `<span class="logged-on">Logged ${esc(fmtDate(parseISO(e.date)))}</span>` : ''}
+    ${ctx === 'card' && !e.done ? `<button class="btn primary" data-act="done" ${attrs}>Done, show next</button>` : ''}
+    <button class="btn quiet" data-act="close" ${attrs}>Close</button>
+    ${hasData ? `<button class="btn quiet danger" data-act="reset-session" ${attrs}>${ctx === 'hist' ? 'Delete session' : 'Clear'}</button>` : ''}
+    ${e.date ? `<span class="logged-on">Logged ${esc(fmtDate(e.date))}</span>` : ''}
   </div>`;
   return h;
 }
 
-/* ---------- PLAN ---------- */
-function viewPlan() {
-  const next = upNext();
-  const N = S.settings.cycles;
-  let c = ui.planC || (next ? next.c : N);
-  c = Math.max(1, Math.min(N, c));
-  ui.planC = c;
-  const lifts = liftsOrdered();
-  const d0 = sessionDate(lifts[0], c, 1), d1 = sessionDate(lifts[lifts.length - 1], c, 4);
-  let h = `<section class="plan-head">
-    <button class="icon-btn" data-act="plan-prev" aria-label="Previous cycle" ${c <= 1 ? 'disabled' : ''}>${ICON.left}</button>
-    <div><div class="cycle-line">Cycle ${c} <span class="muted" style="font-size:22px">of ${N}</span></div>
-    <div class="dates">${esc(fmtDate(d0, { noWeekday: true }))} to ${esc(fmtDate(d1, { noWeekday: true }))}</div></div>
-    <button class="icon-btn" data-act="plan-next" aria-label="Next cycle" ${c >= N ? 'disabled' : ''}>${ICON.right}</button>
-  </section>`;
-  h += `<div class="plan-wrap"><table class="plan"><thead><tr><th class="sr">Lift</th><th>TM</th>`;
-  WEEKS.forEach(wk => { h += `<th><span aria-hidden="true">Wk ${wk.n}</span><span class="sr">Week ${wk.n}</span><small>${wk.label}</small></th>`; });
-  h += `</tr></thead><tbody>`;
-  for (const lift of lifts) {
-    const tm = tmFor(S, lift, c);
-    const ov = S.tm[`${lift.id}|${c}`];
-    const hasOv = ov != null && ov !== '';
-    h += `<tr><th class="lift" scope="row">${esc(lift.name)}<small>${DAYS[+lift.dow] || ''}</small></th>
-      <td><div class="tm-cell"><input class="tm-input${hasOv ? ' override' : ''}" type="number" inputmode="decimal" step="any" data-id="${esc(lift.id)}" data-c="${c}" data-fid="tm-${esc(lift.id)}-${c}" value="${fmt(Math.round(tm * 10) / 10)}" aria-label="${esc(lift.name)} training max, cycle ${c}">
-      ${hasOv ? `<button class="tm-reset" data-act="tm-auto" data-id="${esc(lift.id)}" data-c="${c}">Auto</button>` : ''}</div></td>`;
-    for (let w = 1; w <= 4; w++) {
-      const e = S.log[key(lift.id, c, w)];
-      const isNext = next && next.lift.id === lift.id && next.c === c && next.w === w;
-      const top = topWeight(lift, c, w);
-      let res = '';
-      if (e && e.reps != null && e.reps !== '' && w < 4) res = `×${esc(e.reps)}`;
-      else if (isLogged(e)) res = 'Done';
-      h += `<td><button class="cell${isLogged(e) ? ' logged' : ''}${isNext ? ' is-next' : ''}" data-act="plan-cell" data-id="${esc(lift.id)}" data-c="${c}" data-w="${w}" aria-label="${esc(lift.name)} week ${w}, top set ${fmt(top)}${res ? ', ' + res : ''}"><span class="cw">${fmt(top)}</span><span class="cr">${res || '&nbsp;'}</span></button></td>`;
-    }
-    h += `</tr>`;
-  }
-  h += `</tbody></table></div>`;
-  const bbbLine = lifts.map(l => `${esc(l.name)} <b>${fmt(bbbWeight(S, l, c))}</b>`).join(', ');
-  h += `<p class="plan-notes">Cells show the top set for each week; tap one to open it. Boring But Big this cycle: ${bbbLine}.</p>
-    <p class="plan-notes">Training maxes go up by your increment each cycle. Type a new number to reset a lift from this cycle on; tap Auto to undo.</p>`;
-  const lastCycleEmpty = !Object.keys(S.log).some(k => { const p = k.split('|'); return +p[1] === N && isLogged(S.log[k]); });
-  h += `<div class="plan-actions">
-    <button class="btn" data-act="add-cycle">Add a cycle</button>
-    ${N > 1 && lastCycleEmpty ? `<button class="btn quiet" data-act="remove-cycle">Remove cycle ${N}</button>` : ''}
-  </div>`;
-  return h;
-}
-
-/* ---------- PROGRESS ---------- */
+/* ---------- HISTORY ---------- */
 function liftSeries(lift) {
   const pts = [];
-  for (let c = 1; c <= S.settings.cycles; c++) for (let w = 1; w <= 3; w++) {
-    const v = entryE1(lift, c, w);
-    if (v != null) pts.push({ c, w, x: (c - 1) * 3 + (w - 1), y: v, wt: topWeight(lift, c, w), reps: +S.log[key(lift.id, c, w)].reps });
+  for (const k in S.log) {
+    const p = parseKey(k);
+    if (p.id !== lift.id || p.w > 3) continue;
+    const v = entryE1(lift, p.c, p.w);
+    if (v != null) pts.push({ kind: 'set', c: p.c, w: p.w, x: (p.c - 1) * 3 + (p.w - 1), y: v, wt: topWeight(lift, p.c, p.w), reps: +S.log[k].reps });
   }
-  return pts;
+  return pts.sort((a, b) => a.x - b.x);
 }
-function progressCycles() {
-  const next = upNext();
-  let maxC = next ? next.c : S.settings.cycles;
-  for (const k of Object.keys(S.log)) { const p = k.split('|'); if (isLogged(S.log[k])) maxC = Math.max(maxC, +p[1]); }
-  return Math.max(2, Math.min(S.settings.cycles, maxC));
+function recalsFor(lift) {
+  const out = [];
+  for (const k in S.tm) {
+    const [id, c] = k.split('|');
+    if (id !== lift.id || tmOverride(S, id, +c) == null) continue;
+    const o = S.tm[k];
+    out.push({ c: +c, tm: tmOverride(S, id, +c), w: typeof o === 'object' ? o.w : null, r: typeof o === 'object' ? o.r : null, date: typeof o === 'object' ? o.date : null, k });
+  }
+  return out.sort((a, b) => a.c - b.c);
 }
-function viewProgress() {
+function viewHistory() {
   if (!ui.lift || !S.lifts.some(l => l.id === ui.lift)) {
-    const withData = S.lifts.find(l => liftSeries(l).length);
+    const withData = S.lifts.find(l => lastLogged(S, l));
     ui.lift = (withData || S.lifts[0]).id;
   }
-  let h = `<h1 class="view-title">Progress</h1><div class="tiles" role="group" aria-label="Choose a lift">`;
+  let h = `<h1 class="view-title">History</h1><div class="tiles" role="group" aria-label="Choose a lift">`;
   for (const lift of S.lifts) {
-    const pts = liftSeries(lift);
-    let val = '–', sub = 'No sets logged yet';
-    if (pts.length) {
-      const best = Math.max(...pts.map(p => p.y)), first = pts[0].y;
-      val = r0(best);
-      if (pts.length === 1) sub = '1 set logged';
-      else {
-        const d = best - first;
-        sub = d > 0.5 ? `<span class="up">+${r0(d)}</span> since cycle ${pts[0].c}` : `${pts.length} sets logged`;
-      }
-    }
-    h += `<button class="tile" data-act="prog-lift" data-id="${esc(lift.id)}" aria-pressed="${ui.lift === lift.id}">
-      <div class="tile-name">${esc(lift.name)}</div><div class="tile-val">${val}${pts.length ? '<small>best e1RM</small>' : ''}</div><div class="tile-sub">${sub}</div></button>`;
+    const best = bestE1(lift);
+    const n = nextFor(S, lift);
+    h += `<button class="tile" data-act="hist-lift" data-id="${esc(lift.id)}" aria-pressed="${ui.lift === lift.id}">
+      <div class="tile-name">${esc(lift.name)}</div><div class="tile-val">${best != null ? r0(best) : '–'}${best != null ? '<small>best e1RM</small>' : ''}</div>
+      <div class="tile-sub">Training max now ${r0(tmFor(S, lift, n.c))}</div></button>`;
   }
   h += `</div>`;
   const lift = S.lifts.find(l => l.id === ui.lift);
-  const pts = liftSeries(lift);
+  const pts = liftSeries(lift), recs = recalsFor(lift).filter(r => r.w);
   h += `<section class="panel" style="margin-top:12px">
-    <div class="chart-head"><div class="chart-title">${esc(lift.name)}: estimated 1RM by session<small>From reps on the last set of weeks 1 to 3</small></div>
-    <div class="legend" aria-hidden="true"><span><i></i>Estimated 1RM</span><span><i class="tm"></i>Training max</span></div></div>
-    ${pts.length ? `<div class="chart-wrap" id="chart"></div>` : `<div class="empty">Nothing logged for ${esc(lift.name)} yet. Enter reps on the last set in Train and your estimated 1RM shows up here.</div>`}
+    <div class="chart-head"><div class="chart-title">${esc(lift.name)}: estimated 1RM<small>From reps on the last set of weeks 1 to 3, by cycle</small></div>
+    <div class="legend" aria-hidden="true"><span><i></i>Estimated 1RM</span><span><i class="tm"></i>Training max</span>${recs.length ? '<span><i class="rc"></i>Recalibration</span>' : ''}</div></div>
+    ${pts.length || recs.length ? `<div class="chart-wrap" id="chart"></div>` : `<div class="empty">Nothing logged for ${esc(lift.name)} yet. Log a session from Up next and it shows up here.</div>`}
   </section>`;
-
-  const maxC = progressCycles();
-  h += `<section class="panel" style="margin-top:12px"><div class="chart-title" style="margin-bottom:6px">${esc(lift.name)} by cycle<small>Estimated 1RM per week; ratio uses week 3 and body weight</small></div>
-  <div class="table-wrap"><table class="data"><thead><tr><th>Cycle</th><th>TM</th><th>Wk 1</th><th>Wk 2</th><th>Wk 3</th><th>Body wt</th><th>Ratio</th></tr></thead><tbody>`;
-  for (let c = 1; c <= maxC; c++) {
-    const cells = [1, 2, 3].map(w => {
-      const v = entryE1(lift, c, w);
-      if (v == null) return `<td class="dim">–</td>`;
-      const e = S.log[key(lift.id, c, w)];
-      return `<td>${r0(v)}<span class="sub">${fmt(topWeight(lift, c, w))}×${esc(e.reps)}</span></td>`;
-    }).join('');
-    const bw = num(S.bw[c]);
-    const w3 = entryE1(lift, c, 3);
-    const ratio = bw && w3 ? (w3 / bw).toFixed(2) : '–';
-    h += `<tr><td>${c}</td><td class="dim">${r0(tmFor(S, lift, c))}</td>${cells}
-      <td><input class="bw-input" type="number" inputmode="decimal" step="any" data-c="${c}" data-fid="bw-${c}" value="${bw ?? ''}" placeholder="–" aria-label="Body weight, cycle ${c}"></td>
-      <td class="${ratio === '–' ? 'dim' : ''}">${ratio}</td></tr>`;
+  h += `<section class="panel" style="margin-top:12px"><div class="chart-title" style="margin-bottom:4px">Sessions</div><ul class="hist">${historyList(lift)}</ul></section>
+  <p class="footnote">Estimates use the ${S.settings.formula === 'epley' ? 'Epley' : 'Brzycki'} formula, same as the original sheet. Tap a session to edit it.</p>`;
+  return h;
+}
+function historyList(lift) {
+  const n = nextFor(S, lift);
+  const ws = setWeights(S, lift, n.c, n.w);
+  let h = `<li class="hrow next-up"><button class="hrow-btn" data-act="go-start" data-id="${esc(lift.id)}">
+    <div><div class="h-title">Up next <span class="scheme">${WEEKS[n.w - 1].label}</span></div><div class="h-sub">Cycle ${n.c}, week ${n.w}</div></div>
+    <div class="h-right"><div class="h-main">${ws.map(fmt).join(' / ')}${WEEKS[n.w - 1].amrap ? '+' : ''}</div></div></button></li>`;
+  const items = [];
+  for (const k in S.log) {
+    const p = parseKey(k);
+    if (p.id === lift.id && isLogged(S.log[k])) items.push({ kind: 'set', c: p.c, w: p.w, k });
   }
-  h += `</tbody></table></div>
-  <p class="footnote">Body weight is shared by all lifts. Estimates use the ${S.settings.formula === 'epley' ? 'Epley' : 'Brzycki'} formula, same as the original sheet.</p></section>`;
+  for (const r of recalsFor(lift)) items.push({ kind: 'recal', c: r.c, w: 0, r });
+  items.sort((a, b) => cmp(b, a));
+  if (!items.length) return h + `<li class="empty">No sessions yet.</li>`;
+  for (const it of items) {
+    if (it.kind === 'recal') {
+      const r = it.r;
+      const laterLogged = items.some(x => x.kind === 'set' && x.c >= r.c);
+      const laterRecal = items.some(x => x.kind === 'recal' && x.c > r.c);
+      h += `<li class="hrow"><div class="recal-row">
+        <div><div class="h-title">${r.w ? 'Recalibrated' : 'Training max set'}</div>
+        <div class="h-sub">${r.date ? esc(fmtDate(r.date)) + ', ' : ''}cycle ${r.c} restarts at week 1</div>
+        ${!laterLogged && !laterRecal ? `<button class="link-btn" data-act="recal-undo" data-k="${esc(r.k)}">Undo</button>` : ''}</div>
+        <div class="h-right"><div class="h-main">TM ${r0(r.tm)}</div><div class="h-sub">${r.w ? `from ${fmt(r.w)} × ${r.r}` : ''}</div></div>
+      </div></li>`;
+      continue;
+    }
+    const e = S.log[it.k], wk = WEEKS[it.w - 1];
+    const open = ui.histOpen === it.k;
+    const v = entryE1(lift, it.c, it.w);
+    const main = e.reps != null && e.reps !== '' && wk.amrap ? `${fmt(topWeight(lift, it.c, it.w))} × ${esc(e.reps)}` : 'Done';
+    const when = e.date ? esc(fmtDate(e.date)) : 'From your sheet';
+    h += `<li class="hrow"><button class="hrow-btn" data-act="hist-open" data-k="${esc(it.k)}" aria-expanded="${open}">
+      <div><div class="h-title">Cycle ${it.c}, week ${it.w} <span class="scheme">${wk.label}</span></div><div class="h-sub">${when}${e.note ? ', ' + esc(e.note.length > 40 ? e.note.slice(0, 40) + '…' : e.note) : ''}</div></div>
+      <div class="h-right"><div class="h-main${main === 'Done' ? ' dim' : ''}">${main}</div><div class="h-sub">${v != null ? `e1RM ${r0(v)}` : ''}</div></div>
+    </button>${open ? `<div class="session-body">${sessionBody(lift, it.c, it.w, 'hist')}</div>` : ''}</li>`;
+  }
   return h;
 }
 function niceTicks(min, max, count) {
@@ -857,18 +879,22 @@ function niceTicks(min, max, count) {
   for (let v = lo; v <= hi + step / 2; v += step) ticks.push(Math.round(v * 100) / 100);
   return ticks;
 }
+let chartHide = () => {};
+document.addEventListener('pointerdown', ev => { if (!ev.target.closest('#chart')) chartHide(); });
 function drawChart() {
   const host = $('#chart');
   if (!host) return;
   const lift = S.lifts.find(l => l.id === ui.lift);
   const pts = liftSeries(lift);
-  const maxC = progressCycles();
+  const recs = recalsFor(lift).filter(r => r.w).map(r => ({ kind: 'recal', c: r.c, x: Math.max(0, (r.c - 1) * 3 - 0.5), y: e1rm(+r.w, +r.r || 1, S.settings.formula), r }));
+  const n = nextFor(S, lift);
+  const maxC = Math.max(1, n.c, ...pts.map(p => p.c), ...recs.map(r => r.c));
   const W = Math.max(280, host.clientWidth), H = 250;
   const m = { l: 40, r: 44, t: 14, b: 26 };
-  const maxX = maxC * 3 - 1;
+  const maxX = Math.max(2, maxC * 3 - 1);
   const tms = [];
   for (let c = 1; c <= maxC; c++) tms.push({ c, x0: (c - 1) * 3, x1: (c - 1) * 3 + 2, y: tmFor(S, lift, c) });
-  const ys = pts.map(p => p.y).concat(tms.map(t => t.y));
+  const ys = pts.map(p => p.y).concat(recs.map(r => r.y), tms.map(t => t.y));
   const ticks = niceTicks(Math.min(...ys) * 0.97, Math.max(...ys) * 1.02, 4);
   const y0 = ticks[0], y1 = ticks[ticks.length - 1];
   const X = x => m.l + (x / maxX) * (W - m.l - m.r);
@@ -882,53 +908,62 @@ function drawChart() {
     g += `<text x="${X((c - 1) * 3 + 1)}" y="${H - 6}" text-anchor="middle" font-size="11" fill="var(--muted)">C${c}</text>`;
   }
   g += `<line x1="${m.l}" x2="${W - m.r}" y1="${H - m.b}" y2="${H - m.b}" stroke="var(--line-strong)" stroke-width="1"/>`;
-  // training max as a step line
   let tp = '';
   tms.forEach((t, i) => { tp += `${i ? 'L' : 'M'}${X(Math.max(0, t.x0 - 0.5))},${Y(t.y)} L${X(Math.min(maxX, t.x1 + 0.5))},${Y(t.y)} `; });
   g += `<path d="${tp}" fill="none" stroke="var(--tm)" stroke-width="2" stroke-dasharray="4 4" stroke-linejoin="round"/>`;
-  // e1RM line + markers
-  const lp = pts.map((p, i) => `${i ? 'L' : 'M'}${X(p.x)},${Y(p.y)}`).join(' ');
-  g += `<path d="${lp}" fill="none" stroke="var(--chart)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>`;
-  pts.forEach((p, i) => { g += `<circle data-i="${i}" cx="${X(p.x)}" cy="${Y(p.y)}" r="4.5" fill="var(--chart)" stroke="var(--surface)" stroke-width="2"/>`; });
-  // direct labels at the right end
-  const lastP = pts[pts.length - 1], lastT = tms[tms.length - 1];
-  let ly1 = Y(lastP.y), ly2 = Y(lastT.y);
-  if (Math.abs(ly1 - ly2) < 14) { if (ly1 <= ly2) { ly1 -= 7; ly2 += 7; } else { ly1 += 7; ly2 -= 7; } }
-  g += `<text x="${W - m.r + 6}" y="${ly2 + 4}" font-size="11" fill="var(--muted)">TM</text>`;
-  g += `<text x="${X(lastP.x) + 8}" y="${ly1 - 8}" font-size="12" font-weight="600" fill="var(--ink)">${r0(lastP.y)}</text>`;
+  if (pts.length) {
+    const lp = pts.map((p, i) => `${i ? 'L' : 'M'}${X(p.x)},${Y(p.y)}`).join(' ');
+    g += `<path d="${lp}" fill="none" stroke="var(--chart)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>`;
+  }
+  const hov = pts.concat(recs).sort((a, b) => a.x - b.x);
+  hov.forEach((p, i) => {
+    g += p.kind === 'recal'
+      ? `<circle data-i="${i}" cx="${X(p.x)}" cy="${Y(p.y)}" r="5" fill="var(--surface)" stroke="var(--chart)" stroke-width="2.5"/>`
+      : `<circle data-i="${i}" cx="${X(p.x)}" cy="${Y(p.y)}" r="4.5" fill="var(--chart)" stroke="var(--surface)" stroke-width="2"/>`;
+  });
+  const lastT = tms[tms.length - 1];
+  let ly2 = Y(lastT.y);
+  if (pts.length) {
+    const lastP = pts[pts.length - 1];
+    let ly1 = Y(lastP.y);
+    if (Math.abs(ly1 - ly2) < 16) { if (ly1 <= ly2) { ly1 -= 7; ly2 += 7; } else { ly1 += 7; ly2 -= 7; } }
+    g += `<text x="${X(lastP.x) + 8}" y="${ly1 - 8}" font-size="12" font-weight="600" fill="var(--ink)">${r0(lastP.y)}</text>`;
+  }
+  g += `<text x="${W - m.r + 6}" y="${ly2 + 4}" font-size="11" fill="var(--muted)">TM ${r0(lastT.y)}</text>`;
   g += `<line id="xhair" x1="0" x2="0" y1="${m.t}" y2="${H - m.b}" stroke="var(--line-strong)" stroke-width="1" visibility="hidden"/>`;
   g += `<rect id="hit" x="${m.l}" y="0" width="${W - m.l - m.r}" height="${H}" fill="transparent"/>`;
-  host.innerHTML = `<svg viewBox="0 0 ${W} ${H}" height="${H}" role="img" aria-label="${esc(lift.name)} estimated 1RM over time; see table below for values">${g}</svg><div class="tooltip" id="tip"></div>`;
+  host.innerHTML = `<svg viewBox="0 0 ${W} ${H}" height="${H}" role="img" aria-label="${esc(lift.name)} estimated 1RM and training max by cycle; the session list below has every value">${g}</svg><div class="tooltip" id="tip"></div>`;
   const svg = host.querySelector('svg'), tip = $('#tip'), xh = $('#xhair');
+  const baseR = i => hov[i].kind === 'recal' ? 5 : 4.5;
   const show = ev => {
+    if (!hov.length) return;
     const rect = svg.getBoundingClientRect();
     const px = (ev.clientX - rect.left) * (W / rect.width);
     let best = 0, bd = Infinity;
-    pts.forEach((p, i) => { const d = Math.abs(X(p.x) - px); if (d < bd) { bd = d; best = i; } });
-    const p = pts[best];
-    const tm = tmFor(S, lift, p.c);
-    svg.querySelectorAll('circle').forEach(cn => cn.setAttribute('r', +cn.dataset.i === best ? 6.5 : 4.5));
+    hov.forEach((p, i) => { const d = Math.abs(X(p.x) - px); if (d < bd) { bd = d; best = i; } });
+    const p = hov[best];
+    svg.querySelectorAll('circle').forEach(cn => cn.setAttribute('r', +cn.dataset.i === best ? 7 : baseR(+cn.dataset.i)));
     xh.setAttribute('x1', X(p.x)); xh.setAttribute('x2', X(p.x)); xh.setAttribute('visibility', 'visible');
-    tip.innerHTML = `<b>Cycle ${p.c}, week ${p.w}</b><br><span class="tv">${r0(p.y)}</span> estimated 1RM<br>${fmt(p.wt)} × ${p.reps}, TM ${r0(tm)}`;
+    tip.innerHTML = p.kind === 'recal'
+      ? `<b>Recalibrated${p.r.date ? ', ' + esc(fmtDate(p.r.date)) : ''}</b><br><span class="tv">${r0(p.y)}</span> estimated 1RM<br>${fmt(p.r.w)} × ${p.r.r}, new TM ${r0(p.r.tm)}`
+      : `<b>Cycle ${p.c}, week ${p.w}</b><br><span class="tv">${r0(p.y)}</span> estimated 1RM<br>${fmt(p.wt)} × ${p.reps}, TM ${r0(tmFor(S, lift, p.c))}`;
     tip.classList.add('show');
     const sx = X(p.x) * (rect.width / W);
     const tw = tip.offsetWidth;
     let left = sx + 12; if (left + tw > rect.width) left = sx - tw - 12;
     tip.style.transform = `translate(${Math.max(0, left)}px, ${Math.max(0, Y(p.y) * (rect.height / H) - 70)}px)`;
   };
-  const hide = () => { tip.classList.remove('show'); xh.setAttribute('visibility', 'hidden'); svg.querySelectorAll('circle').forEach(cn => cn.setAttribute('r', 4.5)); };
+  const hide = () => { tip.classList.remove('show'); xh.setAttribute('visibility', 'hidden'); svg.querySelectorAll('circle').forEach(cn => cn.setAttribute('r', baseR(+cn.dataset.i))); };
   chartHide = hide;
   const hit = $('#hit');
   hit.addEventListener('pointermove', show);
   hit.addEventListener('pointerdown', show);
   hit.addEventListener('pointerleave', ev => { if (ev.pointerType === 'mouse') hide(); });
 }
-let chartHide = () => {};
-document.addEventListener('pointerdown', ev => { if (!ev.target.closest('#chart')) chartHide(); });
 
 /* ---------- SETTINGS ---------- */
 function fieldNum(path, val, opts = {}) {
-  return `<input class="field" type="number" inputmode="decimal" step="any" data-field="${path}" data-type="${opts.type || 'num'}" data-fid="f-${path}" value="${esc(val)}" ${opts.min != null ? `min="${opts.min}"` : ''} aria-label="${esc(opts.label || path)}">`;
+  return `<input class="field" type="number" inputmode="decimal" step="any" data-field="${path}" data-type="${opts.type || 'num'}" data-fid="f-${path}" value="${esc(val)}" aria-label="${esc(opts.label || path)}">`;
 }
 function viewSettings() {
   const st = S.settings;
@@ -936,7 +971,6 @@ function viewSettings() {
   let h = `<h1 class="view-title">Settings</h1>`;
   h += `<h2 class="section-title">Program</h2><div class="form">
     <div class="row"><label for="f-title">Name</label><input id="f-title" class="field wide" type="text" data-field="settings.title" data-type="text" data-fid="f-title" value="${esc(st.title)}"></div>
-    <div class="row"><label for="f-start">First training day<span class="hint">Cycle 1, week 1 begins here</span></label><input id="f-start" class="field" type="date" data-field="settings.start" data-type="date" data-fid="f-start" value="${esc(st.start)}"></div>
     <div class="row"><label>Training max<span class="hint">Percent of estimated 1RM</span></label><div class="inline">${fieldNum('settings.tmPct', Math.round(st.tmPct * 1000) / 10, { type: 'pct', label: 'Training max percent' })}%</div></div>
     <div class="row"><label>Boring But Big<span class="hint">Percent of training max, 0 turns it off</span></label><div class="inline">${fieldNum('settings.bbbPct', Math.round(st.bbbPct * 1000) / 10, { type: 'pct', label: 'Boring But Big percent' })}%</div></div>
     <div class="row"><label for="f-formula">1RM formula</label><select id="f-formula" class="field" data-field="settings.formula" data-type="text"><option value="brzycki"${st.formula !== 'epley' ? ' selected' : ''}>Brzycki (sheet)</option><option value="epley"${st.formula === 'epley' ? ' selected' : ''}>Epley</option></select></div>
@@ -950,12 +984,10 @@ function viewSettings() {
     <div class="row"><label for="f-pv">Show plate loading</label><span class="switch"><input id="f-pv" type="checkbox" data-field="settings.plateViz" data-type="bool" ${st.plateViz ? 'checked' : ''}><span></span></span></div>
     <div class="row"><label for="f-theme">Appearance</label><select id="f-theme" class="field" data-field="settings.theme" data-type="text"><option value="auto"${st.theme === 'auto' ? ' selected' : ''}>Match device</option><option value="light"${st.theme === 'light' ? ' selected' : ''}>Light</option><option value="dark"${st.theme === 'dark' ? ' selected' : ''}>Dark</option></select></div>
   </div>`;
-  h += `<h2 class="section-title">Lifts</h2><p class="section-intro">Starting numbers for cycle 1. Changing them recalculates the plan; reps you've already logged keep the weight you lifted.</p>`;
+  h += `<h2 class="section-title">Lifts</h2><p class="section-intro">To restart a lift from a new max, tap Recalibrate on its card in Up next.</p>`;
   S.lifts.forEach((l, i) => {
     h += `<div class="form lift-form">
-      <div class="lift-title"><input type="text" data-field="lifts.${i}.name" data-type="text" data-fid="f-l${i}-name" value="${esc(l.name)}" aria-label="Lift name"><span class="derived" data-derived="lift-${i}">${derivedLift(i)}</span></div>
-      <div class="row"><label for="f-l${i}-dow">Day</label><select id="f-l${i}-dow" class="field" data-field="lifts.${i}.dow" data-type="int">${DAYS_LONG.map((d, j) => `<option value="${j}"${+l.dow === j ? ' selected' : ''}>${d}</option>`).join('')}</select></div>
-      <div class="row"><label>Current lift<span class="hint">Weight × reps you can do</span></label><div class="inline">${fieldNum(`lifts.${i}.w`, l.w, { label: 'Weight' })}×<input class="field" style="width:56px;text-align:right" type="number" inputmode="numeric" min="1" data-field="lifts.${i}.r" data-type="int" data-fid="f-l${i}-r" value="${esc(l.r)}" aria-label="Reps"></div></div>
+      <div class="lift-title"><input type="text" data-field="lifts.${i}.name" data-type="text" data-fid="f-l${i}-name" value="${esc(l.name)}" aria-label="Lift name"></div>
       <div class="row"><label>Add each cycle</label><div class="inline">${fieldNum(`lifts.${i}.inc`, l.inc, { label: 'Increment per cycle' })}${unit}</div></div>
       <div class="row"><label>Boring But Big<span class="hint">Sets × reps, deload sets</span></label><div class="inline">
         <input class="field" style="width:50px;text-align:right" type="number" inputmode="numeric" min="0" data-field="lifts.${i}.bbbSets" data-type="int" data-fid="f-l${i}-bs" value="${esc(l.bbbSets)}" aria-label="BBB sets">×
@@ -977,11 +1009,6 @@ function viewSettings() {
   </div>
   <p class="about">Program math from Jon K's Wendler 5/3/1 spreadsheet v1.3. Not affiliated with Jim Wendler.</p>`;
   return h;
-}
-function derivedLift(i) {
-  const l = S.lifts[i];
-  const e1 = e1rm(+l.w, +l.r || 1, S.settings.formula) || 0;
-  return `1RM ${r0(e1)}, TM ${r0(e1 * S.settings.tmPct)}`;
 }
 function syncSection() {
   const c = Sync.cfg;
@@ -1018,7 +1045,6 @@ function setField(el) {
   else if (type === 'int') { v = num(el.value); if (v == null) { requestRender(); return; } v = Math.round(v); }
   else if (type === 'pct') { v = num(el.value); if (v == null) { requestRender(); return; } v = v / 100; }
   else if (type === 'list') { v = el.value.split(/[,\s]+/).map(Number).filter(n => n > 0); }
-  else if (type === 'date') { if (!/^\d{4}-\d{2}-\d{2}$/.test(el.value)) { requestRender(); return; } v = el.value; }
   else if (type === 'unit') {
     const old = S.settings.unit; v = el.value;
     if (v !== old) {
@@ -1031,52 +1057,46 @@ function setField(el) {
   let obj = S;
   for (let i = 0; i < path.length - 1; i++) obj = obj[path[i]];
   obj[path[path.length - 1]] = v;
-  const section = path[0];
   const fullRender = el.tagName === 'SELECT' || type === 'bool' || type === 'unit';
-  commit(section, { silent: !fullRender });
-  if (!fullRender) {
-    document.querySelectorAll('[data-derived]').forEach(d => { const i = +d.dataset.derived.split('-')[1]; d.textContent = derivedLift(i); });
-    $('#brand-title').textContent = S.settings.title || '5/3/1';
-  }
+  commit(path[0], { silent: !fullRender });
+  if (!fullRender) $('#brand-title').textContent = S.settings.title || '5/3/1';
 }
 
 /* ---------- actions ---------- */
-function weekShift(d) {
-  const next = upNext();
-  const cur = ui.week || (next ? { c: next.c, w: next.w } : { c: S.settings.cycles, w: 4 });
-  let i = (cur.c - 1) * 4 + (cur.w - 1) + d;
-  i = Math.max(0, Math.min(S.settings.cycles * 4 - 1, i));
-  ui.week = { c: Math.floor(i / 4) + 1, w: (i % 4) + 1 };
-  if (next && ui.week.c === next.c && ui.week.w === next.w) ui.week = null;
-  render();
-  window.scrollTo({ top: 0 });
-}
 function setReps(k, reps) {
-  const [id, c, w] = k.split('|');
-  const lift = S.lifts.find(l => l.id === id);
-  const before = bestBefore(lift, +c, +w);
+  const p = parseKey(k);
+  const lift = S.lifts.find(l => l.id === p.id);
+  const before = bestBefore(lift, p.c, p.w);
   updateEntry(k, e => {
     if (reps == null) { delete e.reps; delete e.w; return; }
     e.reps = reps;
-    if (e.w == null) e.w = setWeights(S, lift, +c, +w)[2];
+    if (e.w == null) e.w = setWeights(S, lift, p.c, p.w)[2];
     if (!e.date) e.date = todayISO();
   });
   if (reps != null && before != null) {
-    const v = entryE1(lift, +c, +w);
+    const v = entryE1(lift, p.c, p.w);
     if (v != null && v > before + 1e-6) toast(`New best ${lift.name}: e1RM ${r0(v)}`, 'pr');
   }
 }
+function liftById(id) { return S.lifts.find(l => l.id === id); }
+function scrollToCard(id) {
+  setTimeout(() => { const el = document.getElementById('card-' + id); if (el) el.scrollIntoView({ block: 'start', behavior: 'smooth' }); }, 30);
+}
 const actions = {
-  'week-prev': () => weekShift(-1),
-  'week-next': () => weekShift(1),
-  'go-next': () => { ui.week = null; render(); window.scrollTo({ top: 0 }); },
-  toggle: el => { const k = el.dataset.key; ui.open.has(k) ? ui.open.delete(k) : ui.open.add(k); render(); },
+  'card-toggle': el => {
+    const id = el.dataset.id;
+    if (ui.pin[id]) delete ui.pin[id];
+    else { const n = nextFor(S, liftById(id)); ui.pin[id] = key(id, n.c, n.w); ui.recal = null; }
+    render();
+  },
+  start: el => { const id = el.dataset.id, n = nextFor(S, liftById(id)); ui.pin[id] = key(id, n.c, n.w); ui.recal = null; render(); scrollToCard(id); },
+  'go-start': el => { const id = el.dataset.id, n = nextFor(S, liftById(id)); ui.pin[id] = key(id, n.c, n.w); location.hash = '#lifts'; scrollToCard(id); },
+  'go-history': el => { ui.lift = el.dataset.id; ui.histOpen = null; location.hash = '#history'; },
   set: el => updateEntry(el.dataset.key, e => { const s = Array.isArray(e.sets) ? e.sets.slice() : [false, false, false]; s[+el.dataset.i] = !s[+el.dataset.i]; e.sets = s; }),
   'amrap-inc': el => {
     const k = el.dataset.key, e = S.log[k] || {};
-    const w = +k.split('|')[2];
     const cur = e.reps != null && e.reps !== '' ? +e.reps : null;
-    setReps(k, cur == null ? WEEKS[w - 1].reps[2] : Math.min(50, cur + 1));
+    setReps(k, cur == null ? WEEKS[parseKey(k).w - 1].reps[2] : Math.min(50, cur + 1));
   },
   'amrap-dec': el => {
     const k = el.dataset.key, e = S.log[k] || {};
@@ -1086,46 +1106,57 @@ const actions = {
   },
   bbb: el => updateEntry(el.dataset.key, e => { const i = +el.dataset.i; e.bbb = (+e.bbb || 0) === i ? i - 1 : i; }),
   done: el => {
-    const k = el.dataset.key;
+    const k = el.dataset.key, id = el.dataset.id, lift = liftById(id);
     updateEntry(k, e => { e.done = true; if (!e.date) e.date = todayISO(); });
-    ui.open.delete(k);
-    const n = upNext();
-    if (n) ui.open.add(key(n.lift.id, n.c, n.w));
+    delete ui.pin[id];
+    const n = nextFor(S, lift), ws = setWeights(S, lift, n.c, n.w);
+    toast(`${lift.name} saved. Next: ${ws.map(fmt).join(', ')}`);
+    scrollToCard(id);
+  },
+  close: el => {
+    if (el.dataset.ctx === 'hist') ui.histOpen = null; else delete ui.pin[el.dataset.id];
+    render();
   },
   'reset-session': el => {
-    if (!confirm('Clear everything logged for this session?')) return;
+    if (!confirm(el.dataset.ctx === 'hist' ? 'Delete this session from your history?' : 'Clear what you logged for this session?')) return;
     S.log[el.dataset.key] = { t: Date.now() };
+    if (el.dataset.ctx === 'hist') ui.histOpen = null;
     commit(null);
   },
-  'plan-prev': () => { ui.planC = Math.max(1, (ui.planC || 1) - 1); render(); },
-  'plan-next': () => { ui.planC = Math.min(S.settings.cycles, (ui.planC || 1) + 1); render(); },
-  'plan-cell': el => {
-    const c = +el.dataset.c, w = +el.dataset.w, k = key(el.dataset.id, c, w);
-    const next = upNext();
-    ui.week = next && next.c === c && next.w === w ? null : { c, w };
-    ui.openFor = `${c}|${w}`;
-    ui.open = new Set([k]);
-    location.hash = '#train';
+  'recal-open': el => { ui.recal = el.dataset.id; render(); setTimeout(() => { const i = $(`#recal-w-${CSS.escape(el.dataset.id)}`); if (i) i.focus(); }, 30); },
+  'recal-cancel': () => { ui.recal = null; render(); },
+  'recal-save': el => {
+    const id = el.dataset.id, lift = liftById(id);
+    const w = num(($(`#recal-w-${CSS.escape(id)}`) || {}).value), r = Math.round(num(($(`#recal-r-${CSS.escape(id)}`) || {}).value) || 1);
+    if (!w || w <= 0) { toast('Enter the weight you can lift'); return; }
+    if (r < 1 || r > 20) { toast('Reps should be between 1 and 20'); return; }
+    const e1 = e1rm(w, r, S.settings.formula);
+    const rc = restartCycle(S, lift);
+    S.tm[`${id}|${rc}`] = { tm: Math.round(e1 * S.settings.tmPct * 10) / 10, w, r, date: todayISO() };
+    ui.recal = null; delete ui.pin[id];
+    commit('tm');
+    toast(`${lift.name} restarts at week 1, training max ${r0(e1 * S.settings.tmPct)}`);
   },
-  'tm-auto': el => { delete S.tm[`${el.dataset.id}|${el.dataset.c}`]; commit('tm'); },
-  'add-cycle': () => { S.settings.cycles = (+S.settings.cycles || 0) + 1; commit('settings'); toast(`Added cycle ${S.settings.cycles}`); },
-  'remove-cycle': () => {
-    if (!confirm(`Remove cycle ${S.settings.cycles} from the plan?`)) return;
-    S.settings.cycles = Math.max(1, S.settings.cycles - 1); ui.planC = Math.min(ui.planC || 1, S.settings.cycles); commit('settings');
+  'recal-undo': el => {
+    if (!confirm('Undo this recalibration? The lift goes back to its earlier training max.')) return;
+    delete S.tm[el.dataset.k];
+    commit('tm');
   },
-  'prog-lift': el => { ui.lift = el.dataset.id; render(); },
+  'hist-lift': el => { ui.lift = el.dataset.id; ui.histOpen = null; render(); },
+  'hist-open': el => { ui.histOpen = ui.histOpen === el.dataset.k ? null : el.dataset.k; render(); },
   'export-json': () => download(`531-backup-${todayISO()}.json`, JSON.stringify(S, null, 1), 'application/json'),
   'import-json': () => $('#import-file').click(),
   'export-csv': () => download(`531-log-${todayISO()}.csv`, toCSV(), 'text/csv'),
   'reset-seed': () => {
     if (!confirm('Replace everything with the data from your Google Sheet? Anything logged in this app will be lost.')) return;
-    S = stampAll(makeSeed()); persist(); ui.week = null; ui.openFor = null; render(); Sync.schedule(); toast('Sheet data reloaded');
+    S = stampAll(makeSeed()); persist(); ui.pin = {}; render(); Sync.schedule(); toast('Sheet data reloaded');
   },
   'clear-logs': () => {
-    if (!confirm('Clear every logged session and body weight? Settings and lifts stay.')) return;
+    if (!confirm('Clear every logged session and recalibration? Settings and lifts stay.')) return;
     const now = Date.now();
     for (const k of Object.keys(S.log)) S.log[k] = { t: now };
-    S.bw = {}; commit('bw'); ui.week = null; ui.openFor = null; toast('Log cleared');
+    S.tm = {}; S.t.tm = now; ui.pin = {};
+    commit(null); toast('Log cleared');
   },
   'sync-connect': async () => {
     const t = ($('#sync-token') || {}).value || '';
@@ -1153,15 +1184,16 @@ function download(name, text, type) {
   setTimeout(() => URL.revokeObjectURL(a.href), 4000);
 }
 function toCSV() {
-  const rows = [['cycle','week','lift','scheduled_date','training_max','set1','set2','set3','amrap_reps','est_1rm','bbb_weight','bbb_sets_done','done','logged_on','note']];
-  for (const s of sequence()) {
-    const e = S.log[key(s.lift.id, s.c, s.w)] || {};
-    const ws = setWeights(S, s.lift, s.c, s.w);
-    if (e.w != null) ws[2] = +e.w;
-    const v = entryE1(s.lift, s.c, s.w);
-    const d = sessionDate(s.lift, s.c, s.w);
-    rows.push([s.c, s.w, s.lift.name, `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`, Math.round(tmFor(S, s.lift, s.c) * 10) / 10,
-      ws[0], ws[1], ws[2], e.reps ?? '', v != null ? Math.round(v * 100) / 100 : '', bbbWeight(S, s.lift, s.c), e.bbb ?? '', isLogged(e) ? 'yes' : '', e.date || '', e.note || '']);
+  const rows = [['lift','cycle','week','logged_on','training_max','set1','set2','set3','amrap_reps','est_1rm','bbb_weight','bbb_sets_done','note']];
+  for (const lift of S.lifts) {
+    const items = Object.keys(S.log).map(parseKey).filter(p => p.id === lift.id && isLogged(S.log[key(p.id, p.c, p.w)])).sort(cmp);
+    for (const p of items) {
+      const e = S.log[key(p.id, p.c, p.w)];
+      const ws = setWeights(S, lift, p.c, p.w);
+      if (e.w != null) ws[2] = +e.w;
+      const v = entryE1(lift, p.c, p.w);
+      rows.push([lift.name, p.c, p.w, e.date || '', Math.round(tmFor(S, lift, p.c) * 10) / 10, ws[0], ws[1], ws[2], e.reps ?? '', v != null ? Math.round(v * 100) / 100 : '', bbbWeight(S, lift, p.c), e.bbb ?? '', e.note || '']);
+    }
   }
   return rows.map(r => r.map(v => { const s = String(v); return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s; }).join(',')).join('\n');
 }
@@ -1173,43 +1205,38 @@ document.addEventListener('click', ev => {
   const fn = actions[el.dataset.act];
   if (fn) { ev.preventDefault(); fn(el, ev); }
 });
+document.addEventListener('input', ev => { if (ev.target.matches('.recal-input')) recalPreview(ev.target.dataset.id); });
 document.addEventListener('change', ev => {
   const el = ev.target;
   if (el.matches('[data-field]')) return setField(el);
+  if (el.matches('.recal-input')) return;
   if (el.matches('.amrap-input')) { const v = num(el.value); return setReps(el.dataset.key, v == null ? null : Math.max(0, Math.min(50, Math.round(v)))); }
   if (el.matches('.note-input')) return updateEntry(el.dataset.key, e => { e.note = el.value.trim(); });
-  if (el.matches('.tm-input')) {
-    const v = num(el.value), k = `${el.dataset.id}|${el.dataset.c}`;
-    if (v == null || v <= 0) delete S.tm[k]; else S.tm[k] = v;
-    return commit('tm');
-  }
-  if (el.matches('.bw-input')) {
-    const v = num(el.value);
-    if (v == null || v <= 0) delete S.bw[el.dataset.c]; else S.bw[el.dataset.c] = v;
-    return commit('bw');
-  }
   if (el.id === 'import-file' && el.files && el.files[0]) {
     const f = el.files[0];
     f.text().then(text => {
       let d; try { d = JSON.parse(text); } catch (e) { toast('That file is not a backup from this app'); return; }
       if (!validShape(d)) { toast('That file is not a backup from this app'); return; }
       if (!confirm('Replace the data on this device with this backup?')) return;
-      S = stampAll(normalize(d)); persist(); ui.week = null; ui.openFor = null; render(); Sync.schedule(); toast('Backup restored');
+      S = stampAll(normalize(d)); persist(); ui.pin = {}; render(); Sync.schedule(); toast('Backup restored');
     }).finally(() => { el.value = ''; });
   }
 });
 document.addEventListener('keydown', ev => {
-  if (ev.key === 'Enter' && ev.target.matches('#sync-token')) { ev.preventDefault(); actions['sync-connect'](); }
+  if (ev.key !== 'Enter') return;
+  if (ev.target.matches('#sync-token')) { ev.preventDefault(); actions['sync-connect'](); }
+  if (ev.target.matches('.recal-input')) { ev.preventDefault(); actions['recal-save']({ dataset: { id: ev.target.dataset.id } }); }
 });
+const ROUTES = { lifts: 'lifts', train: 'lifts', plan: 'lifts', history: 'history', progress: 'history', settings: 'settings' };
 function routeFromHash() {
-  const t = (location.hash || '#train').slice(1);
-  ui.tab = ['train', 'plan', 'progress', 'settings'].includes(t) ? t : 'train';
+  ui.tab = ROUTES[(location.hash || '#lifts').slice(1)] || 'lifts';
   render();
   window.scrollTo({ top: 0 });
 }
 window.addEventListener('hashchange', routeFromHash);
 let resizeTimer;
-window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(() => { if (ui.tab === 'progress') drawChart(); }, 150); });
+window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(() => { if (ui.tab === 'history') drawChart(); }, 150); });
+
 
 /* ============================================================
    Sync: one secret gist on the user's GitHub account.
@@ -1340,6 +1367,7 @@ document.addEventListener('visibilitychange', () => {
 window.addEventListener('online', () => { if (Sync.on()) Sync.run(); });
 
 /* ---------- boot ---------- */
+persist();
 routeFromHash();
 if (Sync.on()) Sync.run();
 if ('serviceWorker' in navigator && location.protocol === 'https:') {

@@ -1,6 +1,6 @@
 // Offline support: serve the app from cache when the network is slow or gone.
 // Network first (with a short timeout) so a new deploy shows up on the next visit.
-const CACHE = 't531-v1';
+const CACHE = 't531-v2';
 const ASSETS = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png', './apple-touch-icon.png'];
 
 self.addEventListener('install', e => {

@@ -2,7 +2,7 @@
   "name": "5/3/1 Tracker",
   "short_name": "5/3/1",
   "description": "Wendler 5/3/1 training log: sets, AMRAP reps, estimated 1RM and progress.",
-  "start_url": "./#train",
+  "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "background_color": "#17191C",

@@ -2,10 +2,12 @@
 
 A small web app version of my Wendler 5/3/1 spreadsheet ("Bigger Sol 2026"). It runs entirely in the browser, so it can be hosted for free on GitHub Pages.
 
-- **Train**: this week's sessions with set weights, plate loading per side, an AMRAP rep counter with live estimated 1RM, Boring But Big sets and notes.
-- **Plan**: the whole cycle at a glance, training max per lift (editable to reset a lift), add or remove cycles.
-- **Progress**: estimated 1RM per session against training max, per-cycle table, body weight and strength-to-weight ratio.
-- **Settings**: start date, TM %, BBB %, rounding, bar and plates, lifts and increments, sync, backup and CSV export.
+- **Up next**: one card per lift with the next three set weights, training max and Boring But Big. Tap **Log session** for plate loading, the AMRAP rep counter with live estimated 1RM, BBB sets and notes; **Done** moves that lift to its next week.
+- **Recalibrate**: enter a set you can do now (weight × reps). The training max resets to 90% of its estimated 1RM and the lift restarts at week 1. Past sessions keep the weights you lifted.
+- **History**: estimated 1RM against training max for each lift (recalibrations marked), and every session, editable.
+- **Settings**: TM %, BBB %, rounding, bar and plates, increments, sync, backup and CSV export.
+
+Each lift moves through its own weeks, so skipping a lift one week doesn't hold the others back.
 
 The math matches the original sheet: TM = 90% of 1RM, +increment per cycle, week percentages 65/75/85, 70/80/90, 75/85/95, deload 40/50/60, rounded to the nearest 5 lbs, Brzycki estimate from the AMRAP set.
 
